@@ -32,7 +32,6 @@ export const Feed = ({ articles, pageNumber }) => {
             className={pageNumber === 1 ? styles.disabled : styles.active}
             onClick={() => {
               if (pageNumber > 1) {
-
                 router
                   .push(`/feed/${pageNumber - 1}`)
                   .then(() => window.scrollTo(0, 0));
@@ -48,7 +47,6 @@ export const Feed = ({ articles, pageNumber }) => {
             className={pageNumber === 5 ? styles.disabled : styles.active}
             onClick={() => {
               if (pageNumber < 5) {
-
                 router
                   .push(`/feed/${pageNumber + 1}`)
                   .then(() => window.scrollTo(0, 0));
@@ -83,7 +81,7 @@ export const getServerSideProps = async (pageContext) => {
   }
 
   const apiResponse = await fetch(
-    `https://newsapi.org/v2/top-headlines?country=tw&pageSize=10&page=${pageNumber}`,
+    `https://newsapi.org/v2/top-headlines?country=tw&page=${pageNumber}`,
     {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_NEWS_KEY}`,
