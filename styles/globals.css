@@ -15,6 +15,7 @@ a {
 
 * {
   box-sizing: border-box;
+  color: rgb(235, 235, 235);
 }
 
 .page-container {

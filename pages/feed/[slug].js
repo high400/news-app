@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import styles from '../../styles/Feed.module.css';
 import { Toolbar } from '../../components/toolbar';
+import Background from '../../components/background';
 
 export const Feed = ({ articles, pageNumber }) => {
   const router = useRouter();
@@ -14,7 +15,7 @@ export const Feed = ({ articles, pageNumber }) => {
       </Head>
       <div className="page-container">
         <Toolbar />
-
+        <Background />
         <div className={styles.main}>
           {articles.map((article, index) => (
             <div key={index} className={styles.post}>

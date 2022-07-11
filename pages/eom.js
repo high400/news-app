@@ -1,12 +1,14 @@
 import Head from "next/head";
 import styles from "../styles/EOM.module.css";
 import { Toolbar } from "../components/toolbar";
+import Background from "../components/background";
 
 export const EOM = ({ employee }) => {
   console.log(employee);
   return (
     <>
       <div className="page-container">
+        <Background />
         <div className={styles.main}>
           <h1>A web developer in 7 years 😌😌😌😌</h1>
 
