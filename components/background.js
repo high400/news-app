@@ -1,6 +1,6 @@
 import { bgWrap } from "../styles/bgWrap.module.css";
 import Image from "next/image";
-import myImage from "../public/big_ship.jpg";
+import myImage from "../public/Quang_Trung_3.png";
 
 const Background = () => {
   return (
