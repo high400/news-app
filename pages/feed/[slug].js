@@ -1,7 +1,7 @@
-import Head from "next/head";
-import { useRouter } from "next/router";
-import styles from "../../styles/Feed.module.css";
-import { Toolbar } from "../../components/toolbar";
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import styles from '../../styles/Feed.module.css';
+import { Toolbar } from '../../components/toolbar';
 
 export const Feed = ({ articles, pageNumber }) => {
   const router = useRouter();
@@ -10,7 +10,7 @@ export const Feed = ({ articles, pageNumber }) => {
       <Head>
         <meta property="og:image" content={articles[0]?.urlToImage} />
         <meta property="og:description" content={articles[0]?.description} />
-        <meta property="og:title" content={articles[0]?.title + " and more!"} />
+        <meta property="og:title" content={articles[0]?.title + ' and more!'} />
       </Head>
       <div className="page-container">
         <Toolbar />
@@ -18,9 +18,7 @@ export const Feed = ({ articles, pageNumber }) => {
         <div className={styles.main}>
           {articles.map((article, index) => (
             <div key={index} className={styles.post}>
-              <h1 onClick={() => (window.location.href = article.url)}>
-                {article.title}
-              </h1>
+              <h1 onClick={() => (window.location.href = article.url)}>{article.title}</h1>
               <p>{article.description}</p>
               {!!article.urlToImage && <img src={article.urlToImage} />}
             </div>
@@ -32,9 +30,12 @@ export const Feed = ({ articles, pageNumber }) => {
             className={pageNumber === 1 ? styles.disabled : styles.active}
             onClick={() => {
               if (pageNumber > 1) {
-                router
-                  .push(`/feed/${pageNumber - 1}`)
-                  .then(() => window.scrollTo(0, 0));
+                // As of the current version of Next.js the default behavior for router.push
+                // will leave the scroll where it is, so we have to manually call scrollTo.
+                // This however is being worked on and is fixed in canary.
+                // Show this in tutorial vid:
+                // https://github.com/vercel/next.js/issues/3249
+                router.push(`/feed/${pageNumber - 1}`).then(() => window.scrollTo(0, 0));
               }
             }}
           >
@@ -47,9 +48,12 @@ export const Feed = ({ articles, pageNumber }) => {
             className={pageNumber === 5 ? styles.disabled : styles.active}
             onClick={() => {
               if (pageNumber < 5) {
-                router
-                  .push(`/feed/${pageNumber + 1}`)
-                  .then(() => window.scrollTo(0, 0));
+                // As of the current version of Next.js the default behavior for router.push
+                // will leave the scroll where it is, so we have to manually call scrollTo.
+                // This however is being worked on and is fixed in canary.
+                // Show this in tutorial vid:
+                // https://github.com/vercel/next.js/issues/3249
+                router.push(`/feed/${pageNumber + 1}`).then(() => window.scrollTo(0, 0));
               }
             }}
           >
@@ -68,7 +72,7 @@ export const Feed = ({ articles, pageNumber }) => {
   );
 };
 
-export const getServerSideProps = async (pageContext) => {
+export const getServerSideProps = async pageContext => {
   const pageNumber = pageContext.query.slug;
 
   if (!pageNumber || pageNumber < 1 || pageNumber > 5) {
@@ -81,13 +85,13 @@ export const getServerSideProps = async (pageContext) => {
   }
 
   const apiResponse = await fetch(
-    `https://newsapi.org/v2/top-headlines?country=tw&page=${pageNumber}`,
+    `https://newsapi.org/v2/top-headlines?country=tw&pageSize=5&page=${pageNumber}`,
     {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_NEWS_KEY}`,
       },
-    }
-  ).then((res) => res.json());
+    },
+  ).then(res => res.json());
 
   const { articles } = apiResponse;
 
