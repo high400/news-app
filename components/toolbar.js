@@ -1,4 +1,5 @@
-import { useRouter } from "next/router";
+import Head from "next/head";
+import {useRouter} from "next/router";
 import styles from "../styles/Toolbar.module.css";
 
 export const Toolbar = () => {
@@ -8,7 +9,7 @@ export const Toolbar = () => {
     <div className={styles.main}>
       <div onClick={() => router.push("/")}>Home</div>
       <div onClick={() => router.push("/feed/1")}>Feed</div>
-      <div onClick={() => router.push("/eom")}>EOM</div>
+      <div onClick={() => router.push("/eom")}>A normal guy</div>
       <div
         onClick={() => (window.location.href = "https://www.facebook.com/lehung6000")}
       >

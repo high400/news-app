@@ -8,7 +8,7 @@ export const EOM = ({ employee }) => {
     <>
       <div className="page-container">
         <div className={styles.main}>
-          <h1>Employee of the month</h1>
+          <h1>A normal guy 😌😌😌😌</h1>
 
           <div className={styles.employeeOfTheMonth}>
             <h3>{employee.name}</h3>
