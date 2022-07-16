@@ -1,6 +1,7 @@
 import Head from "next/head";
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 import styles from "../styles/Toolbar.module.css";
+import Facebook from "../components/facebook";
 
 export const Toolbar = () => {
   const router = useRouter();
@@ -11,7 +12,9 @@ export const Toolbar = () => {
       <div onClick={() => router.push("/feed/1")}>Feed</div>
       <div onClick={() => router.push("/eom")}>Developer</div>
       <div
-        onClick={() => (window.location.href = "https://www.facebook.com/lehung6000")}
+        onClick={() =>
+          (window.location.href = "https://www.facebook.com/lehung6000")
+        }
       >
         Facebook
       </div>

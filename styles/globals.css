@@ -15,7 +15,7 @@ a {
 
 * {
   box-sizing: border-box;
-  color: rgb(235, 235, 235);
+  color: rgb(192,192,192);
 }
 
 .page-container {
@@ -23,3 +23,4 @@ a {
   height: 100vh;
   flex-direction: column;
 }
+
