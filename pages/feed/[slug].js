@@ -4,7 +4,7 @@ import styles from '../../styles/Feed.module.css';
 import { Toolbar } from '../../components/toolbar';
 import Background from '../../components/background';
 
-export const Feed = ({ articles, pageNumber }) => {
+export const News = ({ articles, pageNumber }) => {
   const router = useRouter();
   return articles.length ? (
     <>
@@ -104,4 +104,4 @@ export const getServerSideProps = async pageContext => {
   };
 };
 
-export default Feed;
+export default News;
