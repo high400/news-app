@@ -3,7 +3,7 @@ import styles from "../styles/EOM.module.css";
 import { Toolbar } from "../components/toolbar";
 import Background from "../components/background";
 
-export const EOM = ({ employee }) => {
+export const Developer = ({ employee }) => {
   console.log(employee);
   return (
     <>
@@ -37,4 +37,4 @@ export const getServerSideProps = async (pageContext) => {
   };
 };
 
-export default EOM;
+export default Developer;

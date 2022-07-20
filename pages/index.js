@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import Employee, { EOM } from "./eom";
+import Employee, { EOM } from "./developer";
 import { Toolbar } from "../components/toolbar";
 import Footer from "../components/footer";
 import Background from "../components/background";
